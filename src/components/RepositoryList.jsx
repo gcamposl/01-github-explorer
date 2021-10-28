@@ -3,19 +3,6 @@ import '../styles/global.scss'
 import '../styles/repositories.scss'
 import { useState, useEffect } from "react";
 
-
-const repository = {
-  name: 'unform',
-  description: 'Forms in React',
-  link: 'https://github.com/unform/unform'
-}
-
-// useEffect(() =>{
-
-// },[repositories]); -> Primeiro parametro: Funçao que executa, quado o segundo,
-//parametro mudar! Caso o segundo parametro seja vazio, executa apenas uma vez e se 
-// não houver um segundo parametro, o useEffect entra em loop!
-
 export function RepositoryList() {
   const [repositories, setRepositories] = useState([]);
 
@@ -32,10 +19,9 @@ export function RepositoryList() {
       <h1>Lista de Repositórios</h1>
 
       <ul>
-        <RepositoryItem repository={repository} />
-        <RepositoryItem repository={repository} />
-        <RepositoryItem repository={repository} />
-        <RepositoryItem repository={repository} />
+        {repositories.map(repository => {
+          return <RepositoryItem key={repository.name} repository={repository} />
+        })}
       </ul>
     </section>
   );
